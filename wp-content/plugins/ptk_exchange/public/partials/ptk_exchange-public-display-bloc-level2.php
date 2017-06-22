@@ -23,7 +23,7 @@
 							<a href="<?php echo $this->link ?>">
 							<span class="imbox <?php echo $this->classimbox ?>" style="" >
 								<?php if($this->poster){ ?>
-									<img src="<?php echo $this->poster ?>"  class="zz">
+									<img src="<?php echo $this->poster ?>"  class="zz <?php echo $this->classimg ?>">
 								<?php } ?>
 							</span>
 							<header>

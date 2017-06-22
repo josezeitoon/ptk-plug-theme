@@ -24,6 +24,7 @@ class Ptk_exchange_Foldermosaic {
 	public $default_crop = TRUE;
 
 	public $customline_s = Array();
+	public $customcropimage_s = Array();
 	
 	
 	public $hautdouble = "";
@@ -79,53 +80,17 @@ class Ptk_exchange_Foldermosaic {
 	
 	}
 	
-/*////////
-customline_s exemple
-
-	array (size=3)
-  0 => 
-    array (size=5)
-      'cl_line_number' => string '1' (length=1)
-      'cl_h_line' => string 'untiers' (length=7)
-      'cl_blocs_per_line' => string '2' (length=1)
-      'cl_disposition_2' => string 'auto' (length=4)
-      'cl_disposition_3' => string '' (length=0)
-  1 => 
-    array (size=5)
-      'cl_line_number' => string '3' (length=1)
-      'cl_h_line' => string 'unquart' (length=7)
-      'cl_blocs_per_line' => string '3' (length=1)
-      'cl_disposition_2' => string '' (length=0)
-      'cl_disposition_3' => string 'undemiunquartunquart' (length=20)
-
-cl_format
-f_6x6 : format carré
-f_24x36 : 24x36
-f_4x3 : 4x3
-f_16x9 : 16x9 (pano)
-f_12x4 : 12x4 (pano + )
-f_auto : hauteur auto
-1t2t-24x36 : verticale + horizontale 24x36
-2t1t-24x36 : horizontale 24x36 + verticale
-1t2t-4x3 : verticale + horizontale 4x3
-2t1t-4x3 : horizontale 4x3 + verticale
-1t2t-6x6 : carrée + horizontale
-2t1t-6x6 : horizontale + carrée
-
-f_6x6
-f_24x36
-f_4x3
-f_16x9
-f_12x4
-f_auto
-f_1t2t-24x36
-f_1t2t-4x3
-f_1t2t-6x6
-f_2t1t-24x36
-f_2t1t-4x3
-f_2t1t-6x6
-///////////////////*/
-
+	
+	public function set_customcropimage_s ($cropimage_s) { 
+	
+		foreach($cropimage_s as $i => $cropimage){
+		
+			$this->customcropimage_s[$cropimage['ptk_folder_crop_image_ref']] = $cropimage['ptk_folder_crop_image_position'];
+		
+		}
+	
+	}
+	
 
 
 
@@ -300,6 +265,12 @@ f_2t1t-6x6
 								$bloc->setAutoWidthOneOf($bloc_pos_on_line,$this->default_blocs_per_line);
 							}
 							
+							
+							//if custom crop position
+							if(isset($this->customcropimage_s[$serieOrFolder->thumb])){
+								$bloc->classimg = "pos_".$this->customcropimage_s[$serieOrFolder->thumb] ;
+							}						
+							
 							//
 							
 							$bloc->class .=  $bloc->noposter ? " noposter" : "";
@@ -401,7 +372,7 @@ f_2t1t-6x6
 						] ) ) $count_down = 2;
 
 					}
-					//the las line option become the default
+					//the last line option become the default
 					
 					
 					$this->default_blocs_per_line = $count_down;
@@ -525,13 +496,7 @@ f_2t1t-6x6
 					
 					$displayblock->classimg = "pos_".$bloc["bloc_crop_position"] ;
 
-					
-//					$displayblock->bloc->thumb = $thumb ;
-					
-					
-					
-					////////////
-								//echo "<br>bloc_pos_on_line".$bloc_pos_on_line."<br>";
+
 
 					if( isset($width_s[$bloc_pos_on_line]) ){
 					

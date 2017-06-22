@@ -233,12 +233,12 @@ class Ptk_exchange_Public {
 
 
 					$foldermosaic->default_crop = get_field("ptk_folder_def_crop",$templatepageID);
-
-
 					
-										
-					
+					//mise en page spécifique par numéro de ligne
 					$foldermosaic->set_customline_s(get_field("ptk_folder_custom_line",$templatepageID));
+					
+					//cropage spécifique par réf image
+					$foldermosaic->set_customcropimage_s(get_field("ptk_folder_crop_image",$templatepageID));
 					
 					
 					//var_dump($ptkitems );

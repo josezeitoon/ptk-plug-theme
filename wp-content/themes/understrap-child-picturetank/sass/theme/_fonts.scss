@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700&subset=latin-ext');
+
+@font-face {
+  font-family: 'icoptk';
+  src:  url('../fonts/icoptk.eot?jj6ip6');
+  src:  url('../fonts/icoptk.eot?jj6ip6#iefix') format('embedded-opentype'),
+    url('../fonts/icoptk.ttf?jj6ip6') format('truetype'),
+    url('../fonts/icoptk.woff?jj6ip6') format('woff'),
+    url('../fonts/icoptk.svg?jj6ip6#icoptk') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icoptk-"], [class*=" icoptk-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icoptk' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icoptk-plus:before {
+  content: "\e900";
+}
+.icoptk-point:before {
+  content: "\e901";
+}
+

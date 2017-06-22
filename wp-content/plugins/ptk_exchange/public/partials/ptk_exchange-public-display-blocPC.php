@@ -35,6 +35,6 @@
 							</header>
 							</a>
 							<!--<button type="button"  class="addphoto" data-toggle="modal" data-target="#mimodal" data-photoid="<?php echo $this->posterid ?>"><i class="icoptk-plus"></i></button>-->
-							<button type="button"  class="addphoto toadd" data-photoid="<?php echo $this->posterid ?>"><i class="icoptk-plus"></i></button>
+							<button type="button"  class="addphoto toadd" data-photoid="<?php echo $this->posterid ?>"><i class="icoptk-point"></i></button>
 						</article>
 

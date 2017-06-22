@@ -28,9 +28,10 @@
 	</header>
 	
 	
-	
 	<?php if($line_s){  ?>
-		<div id="blocs" class="container <?php echo $foldermosaic->hautdouble ?>"><div class="row">
+		<div id="blocs" class="container <?php echo $foldermosaic->hautdouble ?>">
+		
+		<div class="row<?php echo !$foldermosaic->default_crop ? " fittedimages" : "" ?>">
 			<?php foreach($line_s as $blocs){  ?>
 		
 				
@@ -46,7 +47,8 @@
 				
 	
 	
-			<?php }  ?></div>
+			<?php }  ?>
+		</div>
 		</div>
 	<?php }  ?>
 

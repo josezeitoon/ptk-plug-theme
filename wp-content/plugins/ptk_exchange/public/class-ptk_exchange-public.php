@@ -230,7 +230,10 @@ class Ptk_exchange_Public {
 					if ($v =  get_field("ptk_folder_def_hauteur_ligne",$templatepageID) ) $foldermosaic->default_h_line = $v;
 					if ($v =  get_field("ptk_folder_no_pictures",$templatepageID) ) $foldermosaic->default_no_pictures = $v;
 					if ($v =  get_field("ptk_folder_def_format",$templatepageID) ) $foldermosaic->default_format = $v;
+
+
 					$foldermosaic->default_crop = get_field("ptk_folder_def_crop",$templatepageID);
+
 
 					
 										
@@ -330,8 +333,6 @@ class Ptk_exchange_Public {
 					$liste_s = $photographemosaic->getlistes();
 					
 					
-					//wow ! I must change this echo!!!!
-					echo '<div id="photographes" class="row">';
 					foreach ($liste_s as $liste){
 					
 						//var_dump($liste);
@@ -339,7 +340,6 @@ class Ptk_exchange_Public {
 						require plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/ptk_exchange-public-display-photographesmosaic.php';
 					
 					}
-					echo '</div>';
 					
 					//var_dump($line_s);
 					//if ($line_s) require plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/ptk_exchange-public-display-seriemosaic.php';

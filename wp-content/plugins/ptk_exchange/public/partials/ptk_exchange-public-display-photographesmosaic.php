@@ -17,7 +17,7 @@
 
 ?>
 
-<div class="photographeslist col-lg-4 col-md-6 col-sm-12">
+<div class="photographeslist">
 		<header class="entry-header">
 			<div id ="serie-titles">
 				<h2><?php  echo __($liste["title"]) ; ?></h2>

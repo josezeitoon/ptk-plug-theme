@@ -5403,10 +5403,10 @@ var Popover = function ($) {
 			console.log("addphoto");
 			var icon = jQuery(this);
 			if(icon.hasClass("toadd")){
-				jQuery('#mimodal .modal-title').html("l'image à été ajoutée au dossier<br><b>favorits # 1</b>");
+				jQuery('#mimodal .modal-title').html("l'image à été ajoutée aux Favorits </b>");
 				jQuery(this).removeClass("toadd").addClass("added");
 			}else{
-				jQuery('#mimodal .modal-title').html("l'image à été retiré du dossier<br><b>favorits # 1</b>");
+				jQuery('#mimodal .modal-title').html("l'image à été retiré des favorits </b>");
 				jQuery(this).removeClass("added").addClass("toadd");
 			
 			}

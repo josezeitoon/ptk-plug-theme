@@ -266,47 +266,81 @@ text-transform: uppercase;
 text-align:center;
 }
 
-#photographes{
 
-	//@extend .row;
+
+
+$colums-photographes: (
+  sm: 2,
+  md: 3,
+  lg: 4,
+  xl: 5
+) ;
+
+	
+.photographeslist {
+
 	margin-top:3rem;
 	
-	.photographeslist {
+	h2{
 	
-		//@extend .col-lg-4;
-		//@extend .col-md-6;
-		//@extend .col-sm-12;
+		font-size : 0.8rem;
+		font-weight: 400;
+		border-bottom : 1px solid $gray-lighter;
+		text-transform: uppercase;
 		
-		h2{
+	
+	}
+	
+	ul{
+	
+		margin : 1rem 0;
+		padding:0;
 		
-			font-size : 0.8rem;
-			font-weight: 400;
-			border-bottom : 1px solid $gray-lighter;
-			text-transform: uppercase;
-			
 		
-		}
 		
-		ul{
 		
-			margin : 1rem 0;
-			padding:0;
 		
-			li{
-				font-size: 0.9rem;
-				line-height: 1.4rem;
-				font-weight: 300;
-				list-style: none;
-				margin : 0;
+
+		//nombre de colonnes selon largeur
+		@each $breakpoint in map-keys($grid-breakpoints) {
+
+		   $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+	
+			@include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+ 
+				@if ($breakpoint != xs ) {
+				
+					@include column-count(map-get($colums-photographes, $breakpoint));
+		
+				}
+	
 			}
-		
-		
+
 		}
+
+
+
+
+
+		@include column-rule(1px, solid, $gray-lighter);
+		// marche pas! @column-gap(50px);
+		-webkit-column-gap: 50px;
+		-o-column-gap: 50px;
+		column-gap: 50px;
+		li{
+			font-size: 0.9rem;
+			line-height: 1.4rem;
+			font-weight: 300;
+			list-style: none;
+			margin : 0;
+		}
+	
 	
 	}
 
-
 }
+
+
 .seriemosaic{
 
 	.allintro{
@@ -415,24 +449,28 @@ article{
 	}
 	.addphoto{
 		display:none ;
+		box-sizing: content-box;
 		position:absolute;
 		right:2rem;
 		top:2rem;
-		width:2.2rem;
-		height:2.2rem;
+		width:1.6rem;
+		height:1.6rem;
 		cursor:pointer;
 
 		border:none;
 
 		@include border-radius(50%);
 		background-color : $white;
-		padding:0.1rem;
+		//padding:0.1rem;
 		box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px;
 		outline: none;
+		padding:0;
+		line-height:0;
+		border:2px solid $white;
 	
-		.icoptk-plus{
+		.icoptk-point{
 
-			font-size:2rem;
+			font-size:1.6rem;
 			color : $brand-primary;
 	
 			//@include text-shadow(rgba(black,0.5) 2px 2px 3px);
@@ -445,14 +483,13 @@ article{
 			display:block ;
 			background-color :  rgba($white,0.6);
 			box-shadow: none;
-			width:1.2rem;
-			height:1.2rem;
+			width:1rem;
+			height:1rem;
 			right:0.8rem;
 			top:0.8rem;
 
-			.icoptk-plus{
+			.icoptk-point{
 				
-				font-size:2rem;
 				color : rgba($brand-primary,1);
 				font-size:1rem;
 	
@@ -503,8 +540,6 @@ article{
 
 
 
-
-
 #blocs{
 	//border: 1px solid #000;
 	
@@ -513,7 +548,7 @@ article{
 	
 	&.hautdouble{
 	
-		border-bottom : 2px solid $gray-lighter;
+		border-bottom : 1px solid $gray-lighter;
 	margin-bottom: 5rem;
 	}
 	
@@ -534,12 +569,12 @@ article{
 					margin-bottom: 0.1rem;
 					font-weight: 300; 
 					color:#999;
-					padding : 0 0.5rem;
+					padding : 0 1rem;
 					}
-					h3{ font-size: 0.8rem;font-weight: 300;padding : 0 0.5rem; }
+					h3{ font-size: 0.8rem;font-weight: 300;padding : 0 1rem; }
 					p{ 
-					margin-bottom : 0.2rem;
-					font-size: 0.8rem; text-align : justify;padding : 0 0.5rem;font-weight: 300;}
+					margin-bottom : 1rem;
+					font-size: 0.8rem; text-align : justify;padding : 0 1rem;font-weight: 300;}
 			
 			
 				}
@@ -566,7 +601,7 @@ article{
 			position:relative;
 			//padding-left: $gutterblocs;
 			//padding-right: $gutterblocs;
-			margin-bottom: 1rem;
+			margin-bottom: 2rem;
 			
 			&.noposter{
 			
@@ -610,29 +645,45 @@ article{
 				text-align : center;
 				text-decoration:none;
 		
-				h2{ font-size: 1rem;text-transform: uppercase;margin-bottom: 0.1rem;font-weight: 300; }
-				h3{ font-size: 0.8rem;font-weight: 400; 
+				h2{ 
 				
+					font-size: 1rem;
+					text-transform: uppercase;
+					margin-bottom: 0.1rem;
+					font-weight: 300;
+					padding : 0 1rem;
+				}
+				h3{ font-size: 0.8rem;
+				
+					font-weight: 400; 
+					padding : 0 1rem;
 					&.photo-subhead{
 					
 						display:none;
 					}
 				
 				}
-				p{ font-size: 0.8rem; text-align : justify;padding : 0 1rem;font-weight: 300;}
+				p{ 
+					font-size: 0.8rem;
+					text-align : justify;
+					padding : 0 1rem;
+					font-weight: 300;
+				}
 				
 				&:hover{
 				
 					h2 {
 						color : #999;
 					}
-					.imbox img.zz{
-    					width:106%;
-    					height:106%;
-    					@include translate(-3%,-3%);
+					
+					// on  annule le zoom
+					//.imbox img.zz{
+    					//width:106%;
+    					//height:106%;
+    					//@include translate(-3%,-3%);
 
 					
-					}
+					//}
 					
 				
 				}
@@ -695,29 +746,17 @@ article{
     					object-position: 100% 50%;
     				}
 					
-					//zoom zffzct on hover
-					&.zz{
+					//zoom on hover ---- annulé
+					//&.zz{
 					
     				
-    					@include transition-property(width,height,transform);
- 						@include transition-duration(0.2s);
-  						@include transition-timing-function(ease-in);
+    					//@include transition-property(width,height,transform);
+ 						//@include transition-duration(0.2s);
+  						//@include transition-timing-function(ease-in);
 					
-					}
+					//}
 				}
 				
-				&.fit{
-				
-					img{
-					
-    				object-fit: contain;
-    				border : 1px solid $gray-lighter;
-    				padding : 0.3rem;
-					
-					}
-				
-				
-				}
 
 /*/////// IF NOT OBJECT-FIT 
 with JS - ADDING .coverh with jquery
@@ -755,6 +794,57 @@ with JS - ADDING .coverh with jquery
 		}
 	
 	}
+
+
+	.fittedimages, &.pc .row {
+
+		border-top : 1px solid $gray-lighter;
+		border-bottom : 1px solid $gray-lighter;
+		//background-color : #c9f5d0;
+	
+		&> [class*='col-'] { // c'est bien les blocs
+			padding-right:0;
+			padding-left:0;
+	
+			border-bottom : 1px solid $gray-lighter;
+			margin-bottom : -1px;
+			//background-color : #c9edf5;
+			//border-right : 1px solid $gray-lighter;
+			
+		
+			.imbox {
+			
+				//background-color : #eec9f5;
+			
+				img{
+		
+				
+				object-fit: contain;
+						//border : 1px solid $gray-lighter;
+				padding : 1rem;
+				
+				}
+
+		
+			}
+		}
+	
+	}
+
+
+	// carre pour maquette
+	&.pc .row {
+
+		//border-left : 1px solid $gray-lighter;
+	
+		&> [class*='col-'] {
+			//border-right : 1px solid $gray-lighter;
+			
+		}
+	
+	}
+
+
 
 
 }
@@ -940,6 +1030,21 @@ $linehauteurs: (
   deuxquart : (2/4),
   troisquart : (3/4)
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @each $breakpoint in map-keys($grid-breakpoints) {
